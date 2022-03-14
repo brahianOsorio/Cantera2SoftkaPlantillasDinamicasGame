@@ -1,13 +1,21 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const mongoose = require('mongoose');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const mongodb = 'mongodb+srv://alucard:alucard2107@cantera2.ptof3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
-var app = express();
+mongoose.connect(mongodb,{useNewUrlParser: true, useUnifiedTopology: true})
+    .then(()=> console.log("MongoDB Connected"))
+    .catch(err=> console.log(err));
+
+const app = express();
+
+app.set('port', 8080);
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,8 +27,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', require('./routes/index'));
+app.use('/createGame', require('./routes/users'));
+app.use('/games', require('./routes/createGame'));
+app.use('/startGame', require('./routes/starGame'));
+app.use('/StatusGame', require('./routes/games'));
+app.use('/getWinnerGame', require('./routes/getWinner'));
+
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -37,5 +53,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+app.listen(app.get('port'));
 module.exports = app;

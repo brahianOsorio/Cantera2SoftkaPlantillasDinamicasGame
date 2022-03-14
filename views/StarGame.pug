@@ -1,0 +1,32 @@
+doctype html
+html
+    head
+        meta(charset= 'utf-8')
+        title= 'Game'
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        - var playerone = list[0].name;
+        - var playerTwo = list[1].name;
+        - var playerThree = list[2].name;
+
+        form(method='POST', action= '/startGame' , name='GameStatus' )
+            table
+                tr
+                    td
+                        h1=playerone
+                        input(type="text" , placeholder='Apueta De ' + playerone , name= 'betOne',size='30' , required)
+                    td
+                        h1=playerTwo
+                        input(type="text" , placeholder='Apueta De '+ playerTwo , name= 'betTwo',size='30' , required)
+                    td
+                        h1=playerThree
+                        input(type="text" , placeholder='Apueta De '+playerThree , name= 'betThree',size='30' , required)
+                tr
+                    td(colspan='2', align='right')
+                        input(type='submit' , value='CreateGame')
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+doctype html
+html
+    head
+        meta(charset= 'utf-8')
+        title= 'Game'
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        form(method='POST', action= '/games' , name='Players' )
+            table
+                tr
+                    td
+                        input(type="text" , placeholder='Name1' , name= 'nameOne',size='30' , required,  )
+                tr
+                    td
+                        input(type="text" , placeholder='Name2' , name= 'nameTwo',size='30' , required )
+                tr
+                    td
+                        input(type="text" , placeholder='Name3' , name= 'nameThree',size='30' , required)
+                tr
+                    td(colspan='2', align='right')
+                        input(type='submit' , value='CreateGame')
