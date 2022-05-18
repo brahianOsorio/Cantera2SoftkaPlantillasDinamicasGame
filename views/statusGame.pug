@@ -12,9 +12,11 @@ html
         h1="IdPlayer: " + object.gamers[2]._id + ", NamePlayer: " + object.gamers[2].name + ", BetPlayer: " + object.gamers[2].bet
 
         h1='InProgres: ' + object.inProgres
-        h1='Winner: ' + object.winner
+        h1='Winner: ' + object.winner[0]._id + ", NamePlayer: " + object.winner[0].name + ", BetPlayerAcomulated: " + object.winner[0].betAcomulated
         form(method='GET', action= '/getWinnerGame' , name='GameStatus' )
             table
                 tr
+
                     td(colspan='2', align='right')
+
                         input(type='submit' , value='GetWinn')

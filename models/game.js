@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 
 
-
+//se crea el schema de mongoDb sobre el juego que posee a los jugadores, el estado del juego, y el ganador.
 const GameSchema = new Schema({
 
     gamers: {
@@ -15,7 +15,7 @@ const GameSchema = new Schema({
         trim: true
     },
     winner:{
-        type:String
+        type: []
     }
 });
 
